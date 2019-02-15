@@ -6,7 +6,7 @@ const webpack = require('webpack');
 
 module.exports = () => {
   return {
-    entry: './src/app.js',
+    entry: './src/app.tsx',
     mode: 'development',
     output: {
       path: path.join(__dirname, 'public', 'dist'),
@@ -18,7 +18,10 @@ module.exports = () => {
         loader: 'babel-loader',
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/
-      }, {
+      }, { 
+        test: /\.tsx?$/, 
+        loader: "awesome-typescript-loader" 
+      },{
         test: /\.s?css$/,
         use: [
           MiniCssExtractPlugin.loader,
