@@ -1,11 +1,13 @@
 
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+// const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require('webpack');
 
 module.exports = () => {
   return {
     entry: './src/app.js',
+    mode: 'development',
     output: {
       path: path.join(__dirname, 'public', 'dist'),
       filename: 'bundle.js'
@@ -18,24 +20,22 @@ module.exports = () => {
         exclude: /(node_modules|bower_components)/
       }, {
         test: /\.s?css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                sourceMap: true
-              }
-            },
-            {
-              loader: 'sass-loader',
-              options: {
-                sourceMap: true,
-                includePaths: [path.join(__dirname, 'node_modules', 'bootstrap-sass', 'assets', 'stylesheet')]
-              }
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true
             }
-          ]
-        })
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+              includePaths: [path.join(__dirname, 'node_modules', 'bootstrap-sass', 'assets', 'stylesheet')]
+            }
+          }
+        ]
       }, {
           test: /\.png$/,
           use: "url-loader?limit=100000"
@@ -58,7 +58,9 @@ module.exports = () => {
       ]
     },
     plugins: [
-      new ExtractTextPlugin('styles.css'),
+      new MiniCssExtractPlugin({
+        filename: 'styles.css'
+      }),
       new webpack.ProvidePlugin({
         $: 'jquery',
         jQuery: 'jquery',
