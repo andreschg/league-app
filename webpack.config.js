@@ -74,6 +74,9 @@ module.exports = () => {
       contentBase: path.join(__dirname, 'public'),
       historyApiFallback: true,
       publicPath: '/dist/'
+    },
+    resolve: {
+      extensions: ['.js', '.ts', '.tsx']
     }
   }
 };
