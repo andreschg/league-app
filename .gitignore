@@ -1,4 +1,7 @@
 node_modules
 
+// Config files
+.env.development
+
 // Compiled files
 public/dist/
