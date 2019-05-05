@@ -2,7 +2,8 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 // import AppBar from '@material-ui/core/AppBar';
 import CssBaseLine from '@material-ui/core/CssBaseline';
-import { Login } from './componets/Login/Login';
+// import { Login } from './componets/LoginSignup/Login';
+import LoginSignup from './componets/LoginSignup/LoginSignup';
 import configureStore from './storage/storage';
 import { startAddPlayer } from './storage/actions/players';
 import './styles/styles.scss';
@@ -21,7 +22,7 @@ store.dispatch<any>(startAddPlayer(testPlayer));
 const App = () => (
   <div>
     <CssBaseLine />
-    <Login classes="league-app"/>
+    <LoginSignup classes="league-app"/>
   </div>
 );
 
