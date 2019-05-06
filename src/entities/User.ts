@@ -1,9 +1,9 @@
 interface User {
-  id: string,
+  id?: string,
   name: string;
   lastName: string;
   email: string;
-  teams: Array<String>;
-  matches: Array<any>
+  teams?: Array<String>;
+  matches?: Array<any>
 }
 

@@ -8,6 +8,7 @@
     "dev-server": "webpack-dev-server"
   },
   "devDependencies": {
+    "@types/react-redux": "^7.0.8",
     "awesome-typescript-loader": "^5.2.1",
     "babel": "^6.23.0",
     "babel-core": "^6.26.3",

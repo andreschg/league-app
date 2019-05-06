@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 // import AppBar from '@material-ui/core/AppBar';
 import CssBaseLine from '@material-ui/core/CssBaseline';
 // import { Login } from './componets/LoginSignup/Login';
@@ -20,10 +21,12 @@ const testPlayer = {
 store.dispatch<any>(startAddPlayer(testPlayer));
 
 const App = () => (
-  <div>
-    <CssBaseLine />
-    <LoginSignup classes="league-app"/>
-  </div>
+  <Provider store={store} >
+    <div>
+      <CssBaseLine />
+      <LoginSignup classes="league-app"/>
+    </div>
+  </Provider>
 );
 
 ReactDOM.render(<App />, document.getElementById('app'));

@@ -5,7 +5,7 @@ import Tab from '@material-ui/core/Tab';
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import { Login } from './Login';
-import { SignUp } from './SignUp';
+import SignUp  from './SignUp';
 
 interface Props {
   classes: any
