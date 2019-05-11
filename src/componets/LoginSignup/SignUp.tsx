@@ -8,7 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import { createUser } from '../../storage/actions/users';
 
 interface Properties {
-  classes: any;
+  classes?: any;
   createUser?: Function
 }
 
@@ -55,14 +55,12 @@ export class SignUp extends React.Component<Properties, State> {
   }
 
   render() {
-    const { classes } = this.props;
-
     return (
       <div className="form-container">
         <Typography component="h1" variant="h5">
           Sign up
             </Typography>
-        <form className={classes.form} onSubmit={this.handleOnSubmit}>
+        <form onSubmit={this.handleOnSubmit}>
           <FormControl margin="normal" required fullWidth>
             <InputLabel htmlFor="name">Name</InputLabel>
             <Input id="name" name="name" onChange={this.handleChanges} value={this.state.name} />
@@ -96,7 +94,6 @@ export class SignUp extends React.Component<Properties, State> {
             fullWidth
             variant="contained"
             color="primary"
-            className={classes.submit}
           >
             Sign Up
               </Button>

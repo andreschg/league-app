@@ -1,32 +1,38 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-// import AppBar from '@material-ui/core/AppBar';
 import CssBaseLine from '@material-ui/core/CssBaseline';
-// import { Login } from './componets/LoginSignup/Login';
 import LoginSignup from './componets/LoginSignup/LoginSignup';
+import { firebase } from './firebase/firebase';
 import configureStore from './storage/storage';
-import { startAddPlayer } from './storage/actions/players';
+import { login } from './storage/actions/auth';
+import AppRouter from './router/AppRouter';
+import Loading from './componets/Loading';
 import './styles/styles.scss';
 // import './firebase/firebase.js';
 
+interface AppProps {
+  isLoading: boolean
+}
+
 const store = configureStore();
-const testPlayer = {
-  id: '123',
-  name: 'andres',
-  teams: new Array<any>(),
-  matches: new Array<any>()
-};
+let isLoading = true;
 
-store.dispatch<any>(startAddPlayer(testPlayer));
-
-const App = () => (
+const App = (props: AppProps) => (
   <Provider store={store} >
     <div>
       <CssBaseLine />
-      <LoginSignup classes="league-app"/>
+      { props.isLoading ? <Loading /> : <AppRouter /> }      
     </div>
   </Provider>
 );
 
-ReactDOM.render(<App />, document.getElementById('app'));
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    store.dispatch(login(user.uid));
+  }
+  isLoading = false;
+
+});
+
+ReactDOM.render(<App isLoading={isLoading} />, document.getElementById('app'));

@@ -8,7 +8,7 @@ import { Login } from './Login';
 import SignUp  from './SignUp';
 
 interface Props {
-  classes: any
+  classes?: any
 }
 
 interface State {
@@ -31,12 +31,11 @@ class LoginSignUp extends React.Component<Props, State> {
   }
 
   render() {
-    const { classes } = this.props;
     const { value } = this.state; 
     return (
-      <Grid container className={classes.main} justify="center">
+      <Grid container justify="center">
         <Grid item lg={6} md={10} sm={12}>
-          <Paper className={classes.paper}>
+          <Paper>
             <AppBar position="static" color="default">
               <Tabs 
                 value={value}
@@ -48,8 +47,8 @@ class LoginSignUp extends React.Component<Props, State> {
                 <Tab label="Sign Up" />
               </Tabs>
             </AppBar>
-            {value === 0 && <Login classes={classes} />}
-            {value === 1 && <SignUp classes={classes} />}
+            {value === 0 && <Login />}
+            {value === 1 && <SignUp />}
           </Paper>
         </Grid>
       </Grid>

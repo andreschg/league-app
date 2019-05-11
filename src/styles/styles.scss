@@ -1,5 +1,8 @@
-#app {
-  color: red;
+@import './components/loading';
+
+html,
+body {
+  height: 100%;
 }
 
 .form-container {

@@ -10,14 +10,13 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 
 export function Login(props: any) {
-  const { classes } = props;
 
   return (
     <div className="form-container">
       <Typography component="h1" variant="h5">
         Login
             </Typography>
-      <form className={classes.form}>
+      <form>
         <FormControl margin="normal" required fullWidth>
           <InputLabel htmlFor="email">Email Address</InputLabel>
           <Input id="email" name="email" autoComplete="email" autoFocus />
@@ -40,7 +39,6 @@ export function Login(props: any) {
           fullWidth
           variant="contained"
           color="primary"
-          className={classes.submit}
         >
           Sign in
               </Button>
