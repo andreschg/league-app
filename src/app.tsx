@@ -2,27 +2,21 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import CssBaseLine from '@material-ui/core/CssBaseline';
-import LoginSignup from './componets/LoginSignup/LoginSignup';
 import { firebase } from './firebase/firebase';
 import configureStore from './storage/storage';
 import { login } from './storage/actions/auth';
-import AppRouter from './router/AppRouter';
-import Loading from './componets/Loading';
+import { startLoading, stopLoading } from './storage/actions/status';
+import AppComponent from './componets/App';
 import './styles/styles.scss';
 // import './firebase/firebase.js';
 
-interface AppProps {
-  isLoading: boolean
-}
-
 const store = configureStore();
-let isLoading = true;
 
-const App = (props: AppProps) => (
+const App = () => (
   <Provider store={store} >
     <div>
       <CssBaseLine />
-      { props.isLoading ? <Loading /> : <AppRouter /> }      
+      <AppComponent />
     </div>
   </Provider>
 );
@@ -31,8 +25,7 @@ firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     store.dispatch(login(user.uid));
   }
-  isLoading = false;
-
+  store.dispatch(stopLoading());
 });
 
-ReactDOM.render(<App isLoading={isLoading} />, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById('app'));
