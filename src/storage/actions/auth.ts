@@ -5,11 +5,11 @@ export const login = (uid:string) => ({
   uid
 });
 
-// export const startLogin = () => {
-//   return () => {
-//     return firebase.auth().signInWithPopup(googleAuthProvider);
-//   }
-// }
+export const startLogin = (email:string, password:string) => {
+  return () => {
+    return firebase.auth().signInWithEmailAndPassword(email, password);
+  }
+}
 
 export const logout = () => ({
   type: 'LOGOUT'
