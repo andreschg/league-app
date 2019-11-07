@@ -1,17 +1,32 @@
 interface StatusActionObj {
-  type: string
+  type: string,
+  isLoading?: boolean,
+  message?: string 
 }
 
 const defaultState = {
-  isLoading: true
+  isLoading: true,
+  infoMessage: '',
+  errorMessage: ''
 }
 
 export default (state = defaultState, action: StatusActionObj) => {
   switch(action.type) {
     case 'START_LOADING':
-      return { isLoading: true };
+      return {
+        ...state,
+        isLoading: true 
+      };
     case 'STOP_LOADING':
-      return { isLoading: false};
+      return { 
+        ...state,
+        isLoading: false
+      };
+    case 'SET_INFO_MESSAGE': 
+      return {
+        ...state,
+        infoMessage: action.message
+      };
     default:
       return state;  
   }

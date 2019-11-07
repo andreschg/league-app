@@ -11,8 +11,6 @@ export const startAddPlayer = (player: Player): ThunkAction<void, {}, undefined,
   return (dispatch) => {  
     database.ref('players').push(player).then(() => {
       dispatch(addPlayer(player));
-    }, (error) => {
-      console.log(error);
     });
   }
 }

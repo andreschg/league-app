@@ -5,7 +5,7 @@ import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import LoginSignup from '../componets/LoginSignup/LoginSignup';
 import Dashboard from '../componets/Dashboard';
-
+import DialogsContainer from '../componets/Dialogs/DialogsContainer';
 // export const history = createHistory();
 
 const AppRouter = () => (
@@ -15,7 +15,8 @@ const AppRouter = () => (
         <PublicRoute path="/" component={LoginSignup} exact={true}/>
         <PrivateRoute path="/dashboard" component={Dashboard}  exact={true} />
       </Switch>
-    </div>  
+    </div>
+    <DialogsContainer />
   </BrowserRouter>
 );
 

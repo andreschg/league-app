@@ -15,7 +15,7 @@ export default () => {
     combineReducers({
       players: playersReducer,
       auth: authReducer,
-      status: statusReducer
+      status: statusReducer,
     }), 
     composeEnhancers(applyMiddleware(thunk))
   );

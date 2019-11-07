@@ -8,6 +8,10 @@ import InputLabel from "@material-ui/core/InputLabel";
 import Typography from "@material-ui/core/Typography";
 import { connect } from 'react-redux';
 import { startLogin } from '../../storage/actions/auth';
+import { 
+  startLoading, 
+  stopLoading, 
+  setInfoMessage } from '../../storage/actions/status';
 
 interface LoginProps {
   login: Function
@@ -80,7 +84,13 @@ class Login extends React.Component<LoginProps, LoginState> {
 }
 
 const mapDispatchToProps = (dispatch: any) => ({
-  login: (email: string, password: string) => dispatch(startLogin(email, password))
+  login: (email: string, password: string) => {
+    dispatch(startLoading());
+    return dispatch(startLogin(email, password)).catch((e: Error) => {
+      dispatch(stopLoading());
+      dispatch(setInfoMessage(`An error has ocurred: ${e.message}`));
+    })
+  }
 });
 
 export default connect(undefined, mapDispatchToProps)(Login);

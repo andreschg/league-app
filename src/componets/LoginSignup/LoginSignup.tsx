@@ -33,7 +33,7 @@ class LoginSignUp extends React.Component<Props, State> {
   render() {
     const { value } = this.state; 
     return (
-      <Grid container justify="center">
+      <Grid container justify="center" className="login__container">
         <Grid item lg={6} md={10} sm={12}>
           <Paper>
             <AppBar position="static" color="default">

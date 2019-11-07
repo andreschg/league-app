@@ -5,3 +5,8 @@ export const startLoading = () => ({
 export const stopLoading = () => ({
   type: 'STOP_LOADING'
 });
+
+export const setInfoMessage = (message: string) => ({
+  type: 'SET_INFO_MESSAGE',
+  message
+});
