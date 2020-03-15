@@ -6,7 +6,7 @@ export const login = (uid:string) => ({
 });
 
 export const startLogin = (email:string, password:string) => {
-  return () => {
+  return async () => {
     return firebase.auth().signInWithEmailAndPassword(email, password);
   }
 }
@@ -16,7 +16,8 @@ export const logout = () => ({
 });
 
 export const startLogout = () => {
-  return () => {
-    return firebase.auth().signOut();
+  return async (dispatch: any) => {
+    await firebase.auth().signOut();
+    dispatch(logout());
   }
 }

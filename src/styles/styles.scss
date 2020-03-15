@@ -1,11 +1,9 @@
+@import './base/settings';
+@import './base/base';
 @import './components/loading';
 @import './components/login';
+@import './components/forms';
 
-html,
 body {
-  height: 100%;
-}
-
-.form-container {
-  margin: 5px 25px;
+  font-size: 1.6rem;
 }

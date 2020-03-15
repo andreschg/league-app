@@ -60,7 +60,7 @@ export class SignUp extends React.Component<Properties, State> {
         <Typography component="h1" variant="h5">
           Sign up
             </Typography>
-        <form onSubmit={this.handleOnSubmit}>
+        <form className="form-container__form" onSubmit={this.handleOnSubmit}>
           <FormControl margin="normal" required fullWidth>
             <InputLabel htmlFor="name">Name</InputLabel>
             <Input id="name" name="name" onChange={this.handleChanges} value={this.state.name} />

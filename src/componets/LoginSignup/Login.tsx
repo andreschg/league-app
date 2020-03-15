@@ -49,7 +49,7 @@ class Login extends React.Component<LoginProps, LoginState> {
         <Typography component="h1" variant="h5">
           Login
             </Typography>
-        <form onSubmit={this.handleLogin}>
+        <form className="form-container__form" onSubmit={this.handleLogin}>
           <FormControl margin="normal" required fullWidth>
             <InputLabel htmlFor="email">Email Address</InputLabel>
             <Input id="email" name="email" autoComplete="email" value={this.state.email} onChange={this.handleChanges} autoFocus />

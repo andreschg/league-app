@@ -5,7 +5,9 @@ export default (state = {}, action: any) => {
         uid: action.uid
       };
     case 'LOGOUT':
-      return {};
+      return {
+        uid: ''
+      };
     default:
       return state;
   }
