@@ -47,9 +47,6 @@ class Header extends React.Component<HeaderProps, HeaderState> {
               <IconButton color="inherit" aria-label="Open drawer">
                 <MenuIcon />
               </IconButton>
-              <Typography inline={true} variant="h6" color="inherit" >
-                Material-UI
-              </Typography>
             </Grid>
             <Grid item xs={6} >
               <Grid container justify="flex-end">

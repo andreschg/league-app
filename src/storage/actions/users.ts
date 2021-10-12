@@ -16,3 +16,5 @@ export const addUser = (user: User) => ({
   type: 'ADD_USER',
   user
 });
+
+export const startFetchingUsers = 12;

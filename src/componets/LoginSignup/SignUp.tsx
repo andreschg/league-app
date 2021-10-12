@@ -13,11 +13,12 @@ interface Properties {
 }
 
 interface State {
-  name?: string,
-  lastName?: string,
-  email?: string,
-  password?: string,
-  confirmPassword?: string
+  name?: string;
+  lastName?: string;
+  username?: string;
+  email?: string;
+  password?: string;
+  confirmPassword?: string;
 }
 
 export class SignUp extends React.Component<Properties, State> {
@@ -44,11 +45,12 @@ export class SignUp extends React.Component<Properties, State> {
     const { value: confPass } = document.getElementById('confirm_password') as HTMLInputElement;
     
     if (pass === confPass) {
-      const { name, lastName, email} = this.state;
+      const { name, lastName, email, username } = this.state;
       const user = {
         name,
         lastName,
-        email,
+        username,
+        email
       };
       this.props.createUser(user, pass);
     }
@@ -68,6 +70,10 @@ export class SignUp extends React.Component<Properties, State> {
           <FormControl margin="normal" required fullWidth>
             <InputLabel htmlFor="last_name" >Last Name</InputLabel>
             <Input id="last_name" name="lastName" onChange={this.handleChanges} value={this.state.lastName} />
+          </FormControl>
+          <FormControl margin="normal" required fullWidth>
+            <InputLabel htmlFor="username" >Username</InputLabel>
+            <Input id="username" name="username" onChange={this.handleChanges} value={this.state.username} />
           </FormControl>
           <FormControl margin="normal" required fullWidth>
             <InputLabel htmlFor="email">Email Address</InputLabel>

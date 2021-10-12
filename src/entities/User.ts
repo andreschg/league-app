@@ -3,6 +3,7 @@ interface User {
   name: string;
   lastName: string;
   email: string;
+  username?: string;
   teams?: Array<String>;
   matches?: Array<any>
 }

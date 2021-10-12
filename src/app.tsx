@@ -5,9 +5,10 @@ import CssBaseLine from '@material-ui/core/CssBaseline';
 import { firebase } from './firebase/firebase';
 import configureStore from './storage/storage';
 import { login } from './storage/actions/auth';
-import { startLoading, stopLoading } from './storage/actions/status';
+import { stopLoading } from './storage/actions/status';
 import AppComponent from './componets/App';
 import './styles/styles.scss';
+import { startFetchingFriends } from './storage/actions/friends';
 // import './firebase/firebase.js';
 
 const store = configureStore();
@@ -21,9 +22,11 @@ const App = () => (
   </Provider>
 );
 
-firebase.auth().onAuthStateChanged((user) => {
+firebase.auth().onAuthStateChanged(async (user) => {
   if (user) {
     store.dispatch(login(user.uid));
+    
+    await store.dispatch(startFetchingFriends() as any);
   }
   store.dispatch(stopLoading());
 });

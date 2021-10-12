@@ -6,16 +6,16 @@ import PublicRoute from './PublicRoute';
 import LoginSignup from '../componets/LoginSignup/LoginSignup';
 import Dashboard from '../componets/Dashboard';
 import DialogsContainer from '../componets/Dialogs/DialogsContainer';
+import NewLeagueForm from '../componets/NewLeagueForm/NewLeagueForm';
 // export const history = createHistory();
 
 const AppRouter = () => (
   <BrowserRouter >
-    <div>
-      <Switch>
-        <PublicRoute path="/" component={LoginSignup} exact={true}/>
-        <PrivateRoute path="/dashboard" component={Dashboard}  exact={true} />
-      </Switch>
-    </div>
+    <Switch>
+      <PublicRoute path="/" component={LoginSignup} exact={true}/>
+      <PrivateRoute path="/dashboard" component={Dashboard}  exact={true} />
+      <PrivateRoute path="/create-league" component={NewLeagueForm}  exact={true} />
+    </Switch>
     <DialogsContainer />
   </BrowserRouter>
 );

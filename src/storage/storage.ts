@@ -3,6 +3,7 @@ import thunk from 'redux-thunk';
 import playersReducer from './reducers/players';
 import authReducer from './reducers/auth';
 import statusReducer from './reducers/status';
+import friendsReducer from './reducers/friends';
 // import expensesReducer from '../reducers/expenses';
 // import filtersReducer from '../reducers/filters';
 // import authReducer from '../reducers/auth';
@@ -16,6 +17,7 @@ export default () => {
       players: playersReducer,
       auth: authReducer,
       status: statusReducer,
+      friends: friendsReducer
     }), 
     composeEnhancers(applyMiddleware(thunk))
   );
